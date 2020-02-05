@@ -29,7 +29,7 @@ def binary_search(sorted_arr, t, start=0, end=None):
 
 
 def two_sum1(nums, target):
-    '''double for loop O(n^2) solution'''
+    '''double nested for loop. Naive O(n^2) solution'''
     for i, num in enumerate(nums):
         for j, other_num in enumerate(nums):
             if num + other_num == target:
@@ -65,7 +65,9 @@ def two_sum3(nums, target):
 
 
 def two_sum4(nums, target):
-    '''dumb twosum. Average O(n^2)'''
+    '''dumb twosum. Average O(n^2). If the pair does not exist then O(n^3).
+    Works by randomly chosing two numbers and checking if their sum is
+    the target'''
     from random import choice
     i = 0
     while i < len(nums) ** 3:
@@ -94,7 +96,8 @@ def two_sum5(nums, target, skip=0):
 
 
 def two_sum6(nums, target):
-    '''sort binary search for complement'''
+    '''sort nums. iterate over the sorted arr and use binary search
+    to find its complement O(nlogn)'''
     sorted_nums = sorted(nums)
     for num in nums:
         complement = target - num
