@@ -76,19 +76,20 @@ def two_array_two_sum3(nums1, nums2, target):
         if diff < best_diff:
             best = (sorted1[start], sorted2[end])
             best_diff = diff
+        # all of this (lines 80-92) is actually done on lines 94-101 VVV
         # if start is at the end of sorted1
-        if start == len(sorted1):
-            # if the currval of sorted2 + sorted1's last val is greater than
-            # target we can infer all future sums will be greater therefore
-            # further from the target
-            if sorted2[end] + sorted1[start] > target:
-                keep_going = False
-        # if end is at the beginning of sorted2
-        if end == 0:
-            # using the above logic. if the sum is less than t all future
-            # sums will be further from the target
-            if sorted2[end] + sorted1[start] < target:
-                keep_going = False
+        # if start == len(sorted1):
+        #     # if the currval of sorted2 + sorted1's last val is greater than
+        #     # target we can infer all future sums will be greater therefore
+        #     # further from the target
+        #     if sorted2[end] + sorted1[start] > target:
+        #         keep_going = False
+        # # if end is at the beginning of sorted2
+        # if end == 0:
+        #     # using the above logic. if the sum is less than t all future
+        #     # sums will be further from the target
+        #     if sorted2[end] + sorted1[start] < target:
+        #         keep_going = False
         # if the diff is less than the target move end pointer closer to front
         if diff > target:
             end -= 1
