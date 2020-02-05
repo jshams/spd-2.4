@@ -58,28 +58,44 @@ def two_array_two_sum3(nums1, nums2, target):
     at the end of the other and move them inwards until you can conclude
     there cannot be a better pair.
     Time complexity: O(nlogn)'''
+    # sort both arrays
     sorted1 = sorted(nums1)
     sorted2 = sorted(nums2)
+    # create a starting pointer. used to search through sorted1
     start = 0
+    # create a end pointer. used to search through sorted2
     end = len(nums2) - 1
-    keep_going = True
+    # store the best (lowest) difference and best pair of vals
     best = None
     best_diff = float('inf')
+    keep_going = True
     while keep_going:
+        # calc the diff btwn target and (s1 currval + s2 currval)
         diff = abs(target - (sorted1[start] + sorted2[end]))
+        # if the difference is better update the best diff and the best pair
         if diff < best_diff:
             best = (sorted1[start], sorted2[end])
             best_diff = diff
+        # if start is at the end of sorted1
         if start == len(sorted1):
+            # if the currval of sorted2 + sorted1's last val is greater than
+            # target we can infer all future sums will be greater therefore
+            # further from the target
             if sorted2[end] + sorted1[start] > target:
                 keep_going = False
+        # if end is at the beginning of sorted2
         if end == 0:
+            # using the above logic. if the sum is less than t all future
+            # sums will be further from the target
             if sorted2[end] + sorted1[start] < target:
                 keep_going = False
+        # if the diff is less than the target move end pointer closer to front
         if diff > target:
             end -= 1
+        # if the diff is less than the target move start pointer closer to back
         else:
             start += 1
+        # if we've gone out of range we can stop searching
         if end < 0 or start >= len(sorted1):
             keep_going = False
     return best
