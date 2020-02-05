@@ -1,6 +1,6 @@
 def nearest_binary_search(sorted_arr, t, start=0, end=None):
     '''return the index of the closest number to target t in
-    sorted ar. Uses binary search'''
+    sorted arr. Uses binary search'''
     if end is None:
         end = len(sorted_arr) - 1
     if start == end:
@@ -22,6 +22,8 @@ def nearest_binary_search(sorted_arr, t, start=0, end=None):
 
 
 def two_array_two_sum1(nums1, nums2, target):
+    '''naive nested for loop solution. Iterate over each array within each other
+    Time complexity: O(n^2)'''
     best = None
     best_diff = float('inf')
     for num1 in nums1:
@@ -35,7 +37,8 @@ def two_array_two_sum1(nums1, nums2, target):
 
 def two_array_two_sum2(nums1, nums2, target):
     '''sorts the larger array and iterate over the smaller array
-    and find the closest value to its complement'''
+    and find the closest value to its complement
+    Time complexity: O(nlog)'''
     shorter_arr = nums1 if len(nums1) < len(nums2) else nums2
     sorted_arr = sorted(nums1) if len(nums1) >= len(nums2) else sorted(nums2)
     best_pair = None
@@ -51,6 +54,10 @@ def two_array_two_sum2(nums1, nums2, target):
 
 
 def two_array_two_sum3(nums1, nums2, target):
+    '''sort both arrays. have a pointer at the front of one and another
+    at the end of the other and move them inwards until you can conclude
+    there cannot be a better pair.
+    Time complexity: O(nlogn)'''
     sorted1 = sorted(nums1)
     sorted2 = sorted(nums2)
     start = 0
