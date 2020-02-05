@@ -42,7 +42,6 @@ def two_array_two_sum2(nums1, nums2, target):
     best_diff = float('inf')
     for num in shorter_arr:
         complement = target - num
-        print(sorted_arr, complement)
         comp_index = nearest_binary_search(sorted_arr, complement)
         diff = abs(target - (num + sorted_arr[comp_index]))
         if diff < best_diff:
