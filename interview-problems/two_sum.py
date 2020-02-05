@@ -16,7 +16,7 @@ def binary_search(sorted_arr, t, start=0, end=None):
     it doesnt exist. Uses binary search'''
     if end is None:
         end = len(sorted_arr) - 1
-    if start < end:
+    if start > end:
         return None
     middle = (start + end) // 2
     if sorted_arr[middle] == t:
