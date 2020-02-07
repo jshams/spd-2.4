@@ -10,18 +10,7 @@ def similarity(new_handle, handle):
     '''calculates the similarity between two handles'''
     h1_set = set([*new_handle.lower()])
     h2_set = set([*handle.lower()])
-    # score = 0
-    # score += 3 * len(h1_set.intersection(h2_set))
-    # score -= len(h1_set) + len(h2_set)
     return 3 * len(h1_set.intersection(h2_set)) - len(h1_set) - len(h2_set)
-
-
-# def similarity2(new_handle, handle):
-#     shorter_hand = handle if len(handle) < len(new_handle) else new_handle
-#     set_long_hand = set([*handle] if handle != shorter_hand else [*new_handle])
-#     score = 0
-#     seen = set()
-#     for letter in
 
 
 def most_similar_handles(new_handle, all_handles, k=2):
@@ -33,3 +22,11 @@ def most_similar_handles(new_handle, all_handles, k=2):
         min_heap.append((-sim, handle))
     heapify(min_heap)
     return [heappop(min_heap)[1] for _ in range(k)]
+
+
+suggest = most_similar_handles
+handles = ['DogeCoin', 'YangGang2020', 'HodlForLife',
+           'fakeDonaldDrumpf', 'GodIsLove', 'BernieOrBust']
+ans = suggest('iLoveDogs', handles, k=2)
+# should return ['GodIsLove', 'DogeCoin']
+print(ans)
