@@ -2,26 +2,45 @@ from binary_tree import BinaryTree
 
 
 def tree_two_sum(bst, t):
-    '''given a binary search tree, and and a atrget integer t, return two numbers
+    '''given a binary search tree, and and a target integer t, return two numbers
     within the tree that sum to t, or None if no pair exists'''
-    for node in bst:
-        complement = t - node.data
-        if bst_search(bst, complement):
-            return node.data, complement
+    small_num_gen = in_order_tree_generator(bst)
+    large_num_gen = reverse_order_tree_generator(bst)
+    smaller_num = next(small_num_gen)
+    larger_num = next(large_num_gen)
+    print(smaller_num, larger_num)
+    while smaller_num != larger_num:
+        curr_sum = smaller_num + larger_num
+        if curr_sum == t:
+            return smaller_num, larger_num
+        elif curr_sum > t:
+            larger_num = next(large_num_gen)
+        else:
+            smaller_num = next(small_num_gen)
 
 
-def bst_search(bst, item, node=None):
-    '''given a binary tree and an item, return a boolean indicating whether
-    that item exists in the tree'''
+def in_order_tree_generator(tree, node=None):
+    '''given a tree, this generates nodes datas in order'''
     if node is None:
-        node = bst.root
-    if item == node.data:
-        return True
-    elif item > node.data:
-        if node.right is None:
-            return False
-        return bst_search(bst, item, node.right)
-    else:
-        if node.left is None:
-            return False
-        return bst_search(bst, item, node.left)
+        node = tree.root
+    if node.left is not None:
+        yield from in_order_tree_generator(tree, node.left)
+    yield node.data
+    if node.right is not None:
+        yield from in_order_tree_generator(tree, node.right)
+
+
+def reverse_order_tree_generator(tree, node=None):
+    '''given a tree, this generates nodes datas in reverse order'''
+    if node is None:
+        node = tree.root
+    if node.right is not None:
+        yield from reverse_order_tree_generator(tree, node.right)
+    yield node.data
+    if node.left is not None:
+        yield from reverse_order_tree_generator(tree, node.left)
+
+
+if __name__ == '__main__':
+    t = BinaryTree([5, 3, 6, 2, 7, 1])
+    print(tree_two_sum(t, 8))
