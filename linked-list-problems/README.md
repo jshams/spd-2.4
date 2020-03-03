@@ -27,3 +27,9 @@ Example: If the given linked list is `A → B → C → D → E → F` and `k=4`
 
 ## [Problem 5:](combine_sorted_lls.py) **Combine Sorted Linked Lists**
 Given an array of k linked lists, each of whose items are in sorted order, combine all nodes (do not create new nodes) into a single linked list with all items in order.
+
+---
+
+## [Problem 6:](kth_to_last_node.py) **Kth to Last Node**
+Given a singly-linked list and an integer k, find the value in the kth-to-last node.  
+Example:  If the given linked list is `A → B → C → D → E → F` and `k=4`, the function should return `C`.
