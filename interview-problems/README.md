@@ -27,7 +27,7 @@ You’re working an internship at Twitter and are tasked to improve suggestions 
 
 - Example input: 
 
-```
+```python
 handles = ['DogeCoin', 'YangGang2020', 'HodlForLife', 'fakeDonaldDrumpf', 'GodIsLove', 'BernieOrBust']
 suggest('iLoveDogs', handles, k=2)
 ```
