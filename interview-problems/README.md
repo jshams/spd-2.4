@@ -1,4 +1,4 @@
-# Technical Interview Problems
+# Array Probelms
 
 ## [Problem 1:](two_sum.py) **Two Sum**
 
