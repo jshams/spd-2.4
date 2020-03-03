@@ -27,6 +27,8 @@ def bst_in_order_traversal(bst, node=None):
     '''generate all bst nodes in order'''
     if node is None:
         node = bst.root
+        if bst.root is None:
+            return
     if node.left is not None:
         yield from bst_in_order_traversal(bst, node.left)
     yield node
