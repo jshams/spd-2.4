@@ -38,7 +38,8 @@ def k_largest_values3(nums, k):
     '''heapify nums then remove the largest k items in the heap.
     Negates all numbers because this built in heap is a minheap and this
     requires a max heap
-    Time complexity: O(n) + O(klongn) -> O(n)'''
+    Time complexity: O(n) + O(klongn) -> O(n)
+    Space complexity: O(n)'''
     # make a copy of nums but negate all the values
     max_heap = [-num for num in nums]
     # heapify nums. max number (most negative) is on top
