@@ -8,7 +8,7 @@ Types of problems:
 - [Linked List problems](linked-list-problems)
 - [Binary Tree problems](binary-tree-problems)
 - [Recursion problems](recursion)
-- [Dynamic Programming problems](dynamic-programming)
+- [Dynamic Programming problems](dynamic-programming-problems)
 
 ## Course Repo:
 [SPD 2.4 Job Search and Interview Practice](https://github.com/Make-School-Courses/SPD-2.4-Job-Search-and-Interview-Practice)
